@@ -35,35 +35,38 @@
     function addItem() {
         let addName=document.getElementById('input').value;
         arrName.push(addName);
+        document.getElementById('input').value='';
         showItem(arrName);
 
     }
     function showItem(arr) {
-        let result = "<table width='40%' >";
+        let result = "<table width='20%'>";
         for (let i = 0; i < arr.length; i++) {
-            result += "<tr bgcolor='#f5f5dc'>" + "<td class='crows' id='"+i+"-name"+"' onclick='boxEdit(this)'><input id='' value='" + arr[i] + "' disabled='disabled'></td>" + "<td onclick='editName(this)' class='edit' id='"+i+"-edit"+"'>Edit</td>" + "<td class='delete'  id='"+i+"-name"+"'>Delete</td>" + "</tr>";
+            result += "<tr bgcolor='#f5f5dc'>" + "<td ><input  onclick='editName(this)' id='"+i+"-name"+"' value='" + arr[i] + "' readonly></td>" + "<td onclick='completeName(this)' class='edit' id='"+i+"-edit"+"'>Edit</td>" + "<td class='delete' onclick='deleteItem(this)' id='"+i+"-delete"+"'>Delete</td>" + "</tr>";
+
         }
         result += "</table>";
         document.getElementById('result').innerHTML = result;
     }
-    // function boxEdit() {
-    //     let result = "<table width='40%' >";
-    //     for (let i = 0; i < arrName.length; i++) {
-    //         result += "<tr bgcolor='#f5f5dc' class='crows'>" + "<td id='"+i+"-name"+"' ><input value='"+ arrName[i]+"'></td>" + "<td onclick='editName(this)' class='edit' id='"+i+"-edit"+"'>Edit</td>" + "<td class='delete'  id='"+i+"-name"+"'>Delete</td>" + "</tr>";
-    //     }
-    //     result += "</table>";
-    //     document.getElementById('result').innerHTML = result;
-    //
-    // }
+    function editName(name) {
+        name.readOnly=false;
+        console.log(name.disabled);
 
-
-    
-    // function editName(edit) {
-    //     edit.id.split("-");
-    //     arrName[edit.id[0]]=
-    //
-    //
-    // }Tr
+    }
+    function completeName(name) {
+        name.id.split("-");
+        let value=document.getElementById(name.id[0]+"-name" ).value;
+        arrName[name.id[0]]=value;
+        console.log(arrName);
+    }
+    function deleteItem(del) {
+        del.id.split("-");
+        let value=document.getElementById(del.id[0]+"-name" ).value;
+        if (confirm("ban co muon xoa item khong")) {
+            arrName.splice(del.id[0], 1);
+        }
+        showItem(arrName);
+    }
 
 
 </script>

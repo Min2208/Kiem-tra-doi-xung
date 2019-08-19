@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ung dung quan ly san pham</title>
+    <style>
+        .edit{
+            text-align: center;
+            background-color: dodgerblue;
+            width: 10%;
+        }
+        .delete{
+            text-align: center;
+            background-color: dodgerblue;
+            width: 10%;
+
+        }
+        .crows{
+            height: 100%;
+            width: 80%;
+        }
+    </style>
+</head>
+<body onload="showItem(arrName)">
+<h2>Add New Product</h2>
+<input id="input">
+<button onclick="addItem()">Add</button>
+<h2>Display All Product</h2>
+<h4>Product Name</h4>
+<p id="result"></p>
+
+
+<script>
+    let arrName = ["Sony Xperia", "SamSung Galaxy Note 10", "Nokia 6", "Iphone XSMax", "Xiaomi Mi 5s", "Oppo A71"];
+    function addItem() {
+        let addName=document.getElementById('input').value;
+        arrName.push(addName);
+        showItem(arrName);
+
+    }
+    function showItem(arr) {
+        let result = "<table width='40%' >";
+        for (let i = 0; i < arr.length; i++) {
+            result += "<tr bgcolor='#f5f5dc'>" + "<td class='crows' id='"+i+"-name"+"' onclick='boxEdit(this)'><input id='' value='" + arr[i] + "' disabled='disabled'></td>" + "<td onclick='editName(this)' class='edit' id='"+i+"-edit"+"'>Edit</td>" + "<td class='delete'  id='"+i+"-name"+"'>Delete</td>" + "</tr>";
+        }
+        result += "</table>";
+        document.getElementById('result').innerHTML = result;
+    }
+    // function boxEdit() {
+    //     let result = "<table width='40%' >";
+    //     for (let i = 0; i < arrName.length; i++) {
+    //         result += "<tr bgcolor='#f5f5dc' class='crows'>" + "<td id='"+i+"-name"+"' ><input value='"+ arrName[i]+"'></td>" + "<td onclick='editName(this)' class='edit' id='"+i+"-edit"+"'>Edit</td>" + "<td class='delete'  id='"+i+"-name"+"'>Delete</td>" + "</tr>";
+    //     }
+    //     result += "</table>";
+    //     document.getElementById('result').innerHTML = result;
+    //
+    // }
+
+
+    
+    // function editName(edit) {
+    //     edit.id.split("-");
+    //     arrName[edit.id[0]]=
+    //
+    //
+    // }Tr
+
+
+</script>
+</body>
+</html>
